@@ -18,12 +18,90 @@
 * 点击 **导入**，然后点击 **导入 URL**
 * 粘贴 **https://github.com/uniquemf/pxt-sentry2** 并点击导入
 
-## 积木块预览
+## 使用方法
 
-此图像显示主分支中最后一次提交的块代码。
-此图像可能需要几分钟才能刷新。
+* Get Vision result
 
-![块的渲染视图](https://github.com/uniquemf/pxt-sentry2/raw/master/.github/makecode/blocks.png)
+```blocks
+// Initialized Sentry with I2C port
+let target_num = 0
+Sentry.Begin(sentry_mode_e.kI2CMode, sentry_addr_e.ADDR1)
+Sentry.VisionSetStatus(SentryStatus.Enable, sentry_vision_e.kVisionCard)
+Sentry.LedSetColor(sentry_led_color_e.kLedBlue, sentry_led_color_e.kLedGreen)
+basic.forever(function () {
+    target_num = Sentry.Detected(sentry_vision_e.kVisionCard)
+    serial.writeValue("target_num", target_num)
+    for (let index = 0; index <= target_num - 1; index++) {
+        serial.writeValue("index", index)
+        serial.writeValue("x", Sentry.GetValue(sentry_vision_value.kVisionCard, sentry_gen_info_e.kXValue, index))
+        serial.writeValue("y", Sentry.GetValue(sentry_vision_value.kVisionCard, sentry_gen_info_e.kYValue, index))
+        serial.writeValue("w", Sentry.GetValue(sentry_vision_value.kVisionCard, sentry_gen_info_e.kWidthValue, index))
+        serial.writeValue("h", Sentry.GetValue(sentry_vision_value.kVisionCard, sentry_gen_info_e.kWidthValue, index))
+        serial.writeValue("l", Sentry.GetValue(sentry_vision_value.kVisionCard, sentry_gen_info_e.kLabel, index))
+    }
+})
+
+```
+
+* Get Color result
+
+```blocks
+// Initialized Sentry with I2C port
+let target_num = 0
+Sentry.Begin(sentry_mode_e.kI2CMode, sentry_addr_e.ADDR1)
+Sentry.VisionSetStatus(SentryStatus.Enable, sentry_vision_e.kVisionColor)
+Sentry.LedSetColor(sentry_led_color_e.kLedBlue, sentry_led_color_e.kLedGreen)
+Sentry.SetParamNum(sentry_vision_e.kVisionColor, 3)
+Sentry.SetParam(sentry_vision_e.kVisionColor, Sentry.ColorParam(10, 10, 5, 5))
+Sentry.SetParam(sentry_vision_e.kVisionColor, Sentry.ColorParam(40, 40, 6, 6))
+Sentry.SetParam(sentry_vision_e.kVisionColor, Sentry.ColorParam(80, 80, 8, 8))
+basic.showIcon(IconNames.Heart)
+basic.forever(function () {
+    target_num = Sentry.Detected(sentry_vision_e.kVisionColor)
+    serial.writeValue("target_num", target_num)
+    for (let index = 0; index <= target_num - 1; index++) {
+        serial.writeValue("index", index)
+        serial.writeValue("R", Sentry.ColorRcgValue(sentry_color_info_e.kRValue, index))
+        serial.writeValue("G", Sentry.ColorRcgValue(sentry_color_info_e.kGValue, index))
+        serial.writeValue("B", Sentry.ColorRcgValue(sentry_color_info_e.kBValue, index))
+        serial.writeValue("L", Sentry.ColorRcgValue(sentry_color_info_e.kLabel, index))
+        if (Sentry.DetectedColor(color_label_e.kColorBlack)) {
+            serial.writeLine("black")
+        } else if (Sentry.DetectedColor(color_label_e.kColorWhite)) {
+            serial.writeLine("white")
+        } else if (Sentry.DetectedColor(color_label_e.kColorRed)) {
+            serial.writeLine("red")
+        } else if (Sentry.DetectedColor(color_label_e.kColorYellow)) {
+            serial.writeLine("yellow")
+        }
+    }
+})
+
+
+```
+
+
+* Get QrCode result
+
+```blocks
+// Initialized Sentry with I2C port
+Sentry.Begin(sentry_mode_e.kI2CMode, sentry_addr_e.ADDR1)
+Sentry.SetDefault()
+Sentry.VisionSetStatus(SentryStatus.Enable, sentry_vision_e.kVisionQrCode)
+Sentry.LedSetColor(sentry_led_color_e.kLedGreen, sentry_led_color_e.kLedPurple, 1)
+basic.forever(function () {
+    if (Sentry.Detected(sentry_vision_e.kVisionQrCode) > 0) {
+        serial.writeValue("x", Sentry.QrRcgValue(sentry_qr_info_e.kXValue))
+        serial.writeValue("y", Sentry.QrRcgValue(sentry_qr_info_e.kYValue))
+        serial.writeValue("w", Sentry.QrRcgValue(sentry_qr_info_e.kWidthValue))
+        serial.writeValue("h", Sentry.QrRcgValue(sentry_qr_info_e.kHeightValue))
+        serial.writeString("l=" + Sentry.GetQrCodeValue())
+    }
+})
+
+
+```
+
 
 #### 元数据（用于搜索、渲染）
 

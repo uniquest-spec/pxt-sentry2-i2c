@@ -1,14 +1,16 @@
 {
     "name": "Sentry",
-    "description": "",
+    "version": "1.0.1",
+    "description": "Sensor designed for the AI education.",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
         "main.ts",
-        "README.md"
+        "README.md",
+        "enums.d.ts",
+        "_locales/zh/Sentry-strings.json",
+        "_locales/zh/Sentry-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"
@@ -20,6 +22,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj",
-    "languageRestriction": "javascript-only"
+    "preferredEditor": "tsprj"
 }

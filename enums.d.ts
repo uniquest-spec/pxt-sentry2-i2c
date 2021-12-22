@@ -96,6 +96,12 @@ declare const enum sentry_camera_fps_e {
     kFPSHigh = 1,
 }
 
+declare const enum sentry_coordinate_type_e{
+    //% block="AbsoluteCoordinate"
+    kAbsoluteCoordinate = 0,
+    //% block="PercentageCoordinate"
+    kPercentageCoordinate = 1,
+} 
 
 declare const enum sentry_camera_white_balance_e {
     //% block="AutoWhiteBalance"

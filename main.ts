@@ -177,8 +177,8 @@ namespace Sentry {
         _stream: SentryI2CMethod;
         _mode: sentry_mode_e;
 
-        img_w = 0;
-        img_h = 0;
+        img_w: number;
+        img_h: number;
         constructor(addr: number) {
             this._address = addr
             this._mode = sentry_mode_e.kUnknownMode;

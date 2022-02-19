@@ -20,7 +20,7 @@ namespace Sentry {
 
     const SENTRY_DEVICE_ID = 0x04
 
-    const SENTRY_MAX_RESULT = 5
+    const SENTRY_MAX_RESULT = 25
 
     const SENTRY_OK = 0x00
     const SENTRY_FAIL = 0x01

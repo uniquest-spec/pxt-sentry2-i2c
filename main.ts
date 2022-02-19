@@ -457,16 +457,16 @@ namespace Sentry {
             return SENTRY_OK;
         }
 
-        CameraSetFPS(fps: sentry_camera_fps_e) {
-            let camera_reg_value = this._stream.Get(kRegCameraConfig1);
-            let gfps = (camera_reg_value >> 4) & 0x01
-            if (fps != gfps) {
-                camera_reg_value &= 0xef
-                camera_reg_value |= (fps & 0x01) << 4
-                return this._stream.Set(kRegCameraConfig1, camera_reg_value);
-            }
-            return SENTRY_OK;
-        }
+        // CameraSetFPS(fps: sentry_camera_fps_e) {
+        //     let camera_reg_value = this._stream.Get(kRegCameraConfig1);
+        //     let gfps = (camera_reg_value >> 4) & 0x01
+        //     if (fps != gfps) {
+        //         camera_reg_value &= 0xef
+        //         camera_reg_value |= (fps & 0x01) << 4
+        //         return this._stream.Set(kRegCameraConfig1, camera_reg_value);
+        //     }
+        //     return SENTRY_OK;
+        // }
 
         CameraSetAwb(awb: sentry_camera_white_balance_e) {
             let camera_reg_value = this._stream.Get(kRegCameraConfig1);
@@ -593,18 +593,18 @@ namespace Sentry {
         return prama;
     }
 
-    /**
-    * face prama.
-    * @param l detected lable.
-    */
-    //% blockId=Sentry_vision_face_param block="Face lable%l "
-    //% inlineInputMode=inline
-    //% group="AlgorithmSettings" advanced=true
-    export function FaceParam(l: number): sentry_object_t {
-        let prama = new sentry_object_t();
-        prama.data5 = l;
-        return prama;
-    }
+    // /**
+    // * face prama.
+    // * @param l detected lable.
+    // */
+    // //% blockId=Sentry_vision_face_param block="Face lable%l "
+    // //% inlineInputMode=inline
+    // //% group="AlgorithmSettings" advanced=true
+    // export function FaceParam(l: number): sentry_object_t {
+    //     let prama = new sentry_object_t();
+    //     prama.data5 = l;
+    //     return prama;
+    // }
 
     /**
     * set led color.
@@ -643,17 +643,17 @@ namespace Sentry {
         while (pSentry.CameraSetAwb(wb) != SENTRY_OK);
     }
 
-    /**
-     * set camera FPS.
-     * @param on FPS type.
-     */
-    //% blockId=Sentry_camera_set_fps block="set  Sentry camera high FPS mode$on " color="#1098C9"
-    //% on.shadow="toggleOnOff" on.defl="true"
-    //% group="CameraSettings" advanced=true
-    export function CameraSetFPS(on: boolean) {
-        let fps = on ? sentry_camera_fps_e.kFPSHigh : sentry_camera_fps_e.kFPSNormal;
-        while (pSentry.CameraSetFPS(fps) != SENTRY_OK);
-    }
+    // /**
+    //  * set camera FPS.
+    //  * @param on FPS type.
+    //  */
+    // //% blockId=Sentry_camera_set_fps block="set  Sentry camera high FPS mode$on " color="#1098C9"
+    // //% on.shadow="toggleOnOff" on.defl="true"
+    // //% group="CameraSettings" advanced=true
+    // export function CameraSetFPS(on: boolean) {
+    //     let fps = on ? sentry_camera_fps_e.kFPSHigh : sentry_camera_fps_e.kFPSNormal;
+    //     while (pSentry.CameraSetFPS(fps) != SENTRY_OK);
+    // }
     /**
      * Get vision detected number
      * @param type vision type

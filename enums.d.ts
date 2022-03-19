@@ -20,6 +20,7 @@ declare const enum sentry_vision_e {
     //% block="ObjTrack"
     kVisionObjTrack = 10,
     //% block="MotionDetect"
+    //% blockHidden=true
     kVisionMotionDetect = 11,
     //% blockHidden=true
     kVisionMaxType

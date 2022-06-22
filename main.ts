@@ -261,19 +261,7 @@ namespace Sentry {
                 if (!(sensor_config_reg_value & 0x08)) break;
             }
             return err;
-        }
-
-        SeneorSetCoordinateType(coordinate: sentry_coordinate_type_e){
-            let err, hw_config_reg_value = this._stream.Get(kRegHWConfig)
-
-            if(((hw_config_reg_value & 0x0c) >> 2) != coordinate){
-                hw_config_reg_value &= 0xF3
-                hw_config_reg_value != (coordinate & 0x03) << 2
-                err = this._stream.Set(kRegHWConfig,hw_config_reg_value)
-            }
-            return err;
-        }
-            
+        }  
 
         SensorSetRestart() {
             return this._stream.Set(kRegRestart, 1);
@@ -504,24 +492,6 @@ namespace Sentry {
     }
 
     /**
-     * Reset Sentry.
-     */
-    //% blockId=Sentry_set_default block="restore  Sentry  default settings "
-    //% group="Settings"
-    export function SetDefault() {
-        while (pSentry.SensorSetDefault() != SENTRY_OK);
-    }
-
-    /**
-   * Set coordinate type.
-   */
-    //% blockId=Sentry_set_coordinate_type block="set coordinate type %coordinate "
-    //% group="Settings"
-    export function SeneorSetCoordinateType(coordinate: sentry_coordinate_type_e) {
-        while (pSentry.SeneorSetCoordinateType(coordinate) != SENTRY_OK);
-    }
-
-    /**
      * Sentry vision enable set.
     */
     //% blockId=Sentry_vision_Set block="set  Sentry %enable|algorithm%vision_type "
@@ -592,67 +562,6 @@ namespace Sentry {
         while (pSentry.SetParam(sentry_vision_e.kVisionBlob, prama, param_id) != SENTRY_OK);
     }
 
-    // /**
-    // * face prama.
-    // * @param l detected lable.
-    // */
-    // //% blockId=Sentry_vision_face_param block="Face lable%l "
-    // //% inlineInputMode=inline
-    // //% group="AlgorithmSettings" advanced=true
-    // export function FaceParam(l: number): sentry_object_t {
-    //     let prama = new sentry_object_t();
-    //     prama.data5 = l;
-    //     return prama;
-    // }
-
-    /**
-    * set led color.
-    * @param detected_color led color while sensor detected target.
-    * @param undetected_color led color while sensor undetected target.
-    * @param level led light level.
-    */
-    //% blockId=Sentry_led_set_color block="set  Sentry LED when detected %detected_color|when undetected %undetected_color||level %level "
-    //% detected_color.defl=sentry_led_color_e.kLedBlue
-    //% undetected_color.defl=sentry_led_color_e.kLedGreen
-    //% level.min=0 level.max=15 level.defl=1
-    //% inlineInputMode=inline
-    //% expandableArgumentMode="enabled"
-    //% group="Settings" advanced=true 
-    export function LedSetColor(detected_color: sentry_led_color_e, undetected_color: sentry_led_color_e, level: number = 1) {
-        while (pSentry.LedSetColor(detected_color, undetected_color, level) != SENTRY_OK);
-    }
-
-    /**
-     * set camera zoom.
-     * @param zoom zoom value.
-     */
-    //% blockId=Sentry_camera_set_zoom block="set  Sentry camera digital zoom%zoom " color="#1098C9"
-    //% group="CameraSettings" advanced=true
-    export function CameraSetZoom(zoom: sentry_camera_zoom_e) {
-        while (pSentry.CameraSetZoom(zoom) != SENTRY_OK);
-    }
-
-    /**
-    * set camera white balance.
-    * @param wb white balance type.
-    */
-    //% blockId=Sentry_camera_set_awb block="set  Sentry camera white balance%wb " color="#1098C9"
-    //% group="CameraSettings" advanced=true
-    export function CameraSetAwb(wb: sentry_camera_white_balance_e) {
-        while (pSentry.CameraSetAwb(wb) != SENTRY_OK);
-    }
-
-    // /**
-    //  * set camera FPS.
-    //  * @param on FPS type.
-    //  */
-    // //% blockId=Sentry_camera_set_fps block="set  Sentry camera high FPS mode$on " color="#1098C9"
-    // //% on.shadow="toggleOnOff" on.defl="true"
-    // //% group="CameraSettings" advanced=true
-    // export function CameraSetFPS(on: boolean) {
-    //     let fps = on ? sentry_camera_fps_e.kFPSHigh : sentry_camera_fps_e.kFPSNormal;
-    //     while (pSentry.CameraSetFPS(fps) != SENTRY_OK);
-    // }
     /**
      * Get vision detected number
      * @param type vision type

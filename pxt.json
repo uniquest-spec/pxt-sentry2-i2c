@@ -1,6 +1,6 @@
 {
     "name": "Sentry",
-    "version": "1.4.1",
+    "version": "1.7.2",
     "description": "Sensor designed for the AI education.",
     "dependencies": {
         "core": "*"
@@ -9,8 +9,10 @@
         "main.ts",
         "README.md",
         "enums.d.ts",
-        "_locales/zh/Sentry-strings.json",
-        "_locales/zh/Sentry-jsdoc-strings.json"
+        "_locales/zh-cn/Sentry-strings.json",
+        "_locales/zh-cn/Sentry-jsdoc-strings.json",
+        "_locales/zh-tw/Sentry-strings.json",
+        "_locales/zh-tw/Sentry-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"

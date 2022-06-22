@@ -26,6 +26,15 @@ declare const enum sentry_vision_e {
     kVisionMaxType
 }
 
+declare const enum sentry_mode_e {
+    //% block="SerialMode"
+    kSerialMode = 0,
+    //% block="I2CMode"
+    kI2CMode = 1,
+    //% blockHidden=true 
+    kUnknownMode,
+}
+
 declare const enum card_label_e {
     //% block="Forward"
     kCardForward = 1,

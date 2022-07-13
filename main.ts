@@ -148,7 +148,7 @@ namespace Sentry {
             err = this.Set(kRegVisionId, vision_id)
             if (err) return err;
 
-            err = this.Set(kRegParamId, param_id + 1)
+            err = this.Set(kRegParamId, param_id)
             if (err) return err;
 
             this.Set(0x70, (param.data1 >> 8) & 0xFF)
@@ -375,10 +375,13 @@ namespace Sentry {
 
         private read(vision_type: sentry_vision_e, obj_info: sentry_obj_info_e, obj_id: number = 1) {
 
-            if (obj_id >= SENTRY_MAX_RESULT) obj_id = SENTRY_MAX_RESULT - 1;
+            if (obj_id > SENTRY_MAX_RESULT || obj_id < 1)
+                return 0;
 
             if (null == _vision_states[vision_type - 1] || (vision_type - 1) >= sentry_vision_e.kVisionMaxType)
                 return 0;
+            
+            obj_id = obj_id - 1;
 
             switch (obj_info) {
                 case sentry_obj_info_e.kStatus:

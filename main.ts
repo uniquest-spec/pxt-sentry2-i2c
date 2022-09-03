@@ -536,6 +536,20 @@ namespace Sentry {
     }
 
     /**
+     * Get the result of vision Line value.
+     * @param obj_info Paramters type
+     * @param obj_id:  object index
+     */
+    //% blockId=Sentry_get_Line_value block=" Sentry  algorithm Line| %obj_info|| index %obj_id " color="#2E8B57"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    //% obj_id.min=1 obj_id.max=25 obj_id.defl=1
+    //% group="Functions"
+    export function LineValue(obj_info: sentry_Line_info_e, obj_id: number = 1): number {
+        return pSentry.GetValue(sentry_vision_e.kVisionLine, <number>obj_info, obj_id)
+    }
+
+    /**
      * Get the result of vision QrCode value
      */
     //% blockId=Sentry_get_qr_value block=" Sentry QrCode value " color="#2E8B57"

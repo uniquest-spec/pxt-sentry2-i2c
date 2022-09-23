@@ -8,7 +8,7 @@ declare const enum sentry_vision_e {
     //% block="Line"
     kVisionLine = 4,
     //% block="Learning"
-    kVisionLearning  = 5,
+    kVisionLearning = 5,
     //% block="Card"
     kVisionCard = 6,
     //% block="Face"
@@ -18,9 +18,9 @@ declare const enum sentry_vision_e {
     //% block="QrCode"
     kVisionQrCode = 9,
     //% block="ObjTrack"
+    //% blockHidden=true
     kVisionObjTrack = 10,
     //% block="MotionDetect"
-    //% blockHidden=true
     kVisionMotionDetect = 11,
     //% blockHidden=true
     kVisionMaxType

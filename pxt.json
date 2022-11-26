@@ -1,6 +1,6 @@
 {
     "name": "Sentry",
-    "version": "1.7.8",
+    "version": "1.7.9",
     "description": "Sensor designed for the AI education.",
     "dependencies": {
         "core": "*",
@@ -17,13 +17,6 @@
     ],
     "testFiles": [
         "test.ts"
-    ],
-    "targetVersions": {
-        "target": "5.0.12",
-        "targetId": "microbit"
-    },
-    "supportedTargets": [
-        "microbit"
     ],
     "preferredEditor": "tsprj"
 }

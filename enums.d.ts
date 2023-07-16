@@ -8,7 +8,7 @@ declare const enum sentry_vision_e {
     //% block="Line"
     kVisionLine = 4,
     //% block="Learning"
-    kVisionLearning = 5,
+    kVisionLearning  = 5,
     //% block="Card"
     kVisionCard = 6,
     //% block="Face"
@@ -30,6 +30,7 @@ declare const enum sentry_vision_e {
 
 declare const enum sentry_mode_e {
     //% block="SerialMode"
+    //% blockHidden=true 
     kSerialMode = 0,
     //% block="I2CMode"
     kI2CMode = 1,
@@ -76,25 +77,25 @@ declare const enum card_label_e {
     kCardDivide = 18,
     //% block="Equal"
     kCardEqual = 19,
-    //% block="0"
+    //% block="0️⃣ 0"
     kCardZero = 20,
-    //% block="1"
+    //% block="1️⃣ 1"
     kCardOne = 21,
-    //% block="2"
+    //% block="2️⃣ 2"
     kCardTwo = 22,
-    //% block="3"
+    //% block="3️⃣ 3"
     kCardThree = 23,
-    //% block="4"
+    //% block="4️⃣ 4"
     kCardFour = 24,
-    //% block="5"
+    //% block="5️⃣ 5"
     kCardFive = 25,
-    //% block="6"
+    //% block="6️⃣ 6"
     kCardSix = 26,
-    //% block="7"
+    //% block="7️⃣ 7"
     kCardSeven = 27,
-    //% block="8"
+    //% block="8️⃣ 8"
     kCardEight = 28,
-    //% block="9"
+    //% block="9️⃣ 9"
     kCardNine = 29,
     //% block="A"
     kCardA = 31,
@@ -251,19 +252,6 @@ declare const enum sentry_gen_info_e {
     kLabel
 }
 
-declare const enum sentry_Line_info_e {
-    //% block="X coordinate of end point"
-    kXValue = 1,
-    //% block="Y coordinate of end point"
-    kYValue,
-    //% block="X coordinate of starting point"
-    kWidthValue,
-    //% block="Y coordinate of starting point"
-    kHeightValue,
-    //% block="inclination angle"
-    kLabel
-}
-
 declare const enum sentry_custom_info_e {
     //% block="reult1"
     kXValue = 1,
@@ -274,6 +262,18 @@ declare const enum sentry_custom_info_e {
     //% block="reult4"
     kHeightValue,
     //% block="reult5"
+    kLabel
+}
+declare const enum sentry_Line_info_e {
+    //% block="X coordinate of end point"
+    kXValue = 1,
+    //% block="Y coordinate of end point"
+    kYValue,
+    //% block="X coordinate of starting point"
+    kWidthValue,
+    //% block="Y coordinate of starting point"
+    kHeightValue,
+    //% block="inclination angle"
     kLabel
 }
 
